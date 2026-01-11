@@ -10,7 +10,7 @@ const AlcoholFreeCounter = () => {
     }
     const start = new Date();
     start.setDate(start.getDate() - 1); // Yesterday
-    start.setHours(9, 15, 0, 0); // 9:15 AM
+    start.setHours(21, 15, 0, 0); // 9:15 PM
     localStorage.setItem('alcoholFreeStartDate', start.toISOString());
     return start;
   });
