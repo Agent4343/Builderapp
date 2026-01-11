@@ -1,7 +1,7 @@
 {
-  "name": "alcohol-free-counter",
+  "name": "julies-alcohol-free",
   "version": "1.0.0",
-  "description": "A beautiful alcohol-free daily counter to celebrate your journey",
+  "description": "Julie's Alcohol Free - A beautiful daily counter to celebrate your journey",
   "private": true,
   "dependencies": {
     "react": "^18.2.0",
