@@ -112,8 +112,8 @@ const AlcoholFreeCounter = () => {
         <div className="glow"></div>
 
         <div className="header">
-          <span className="badge">JULIE'S ALCOHOL FREE</span>
-          <h1 className="title">Your Journey</h1>
+          <span className="badge">ALCOHOL FREE</span>
+          <h1 className="title">Julie's Journey</h1>
         </div>
 
         <div className="main-counter">
