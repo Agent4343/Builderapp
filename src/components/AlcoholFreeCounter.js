@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './AlcoholFreeCounter.css';
 
 const AlcoholFreeCounter = () => {
-  // Start date: 150 days ago from now
+  // Start date: 150 days ago at midnight
   const [startDate] = useState(() => {
     const saved = localStorage.getItem('alcoholFreeStartDate');
     if (saved) {
@@ -10,6 +10,7 @@ const AlcoholFreeCounter = () => {
     }
     const start = new Date();
     start.setDate(start.getDate() - 150);
+    start.setHours(0, 0, 0, 0); // Set to midnight
     localStorage.setItem('alcoholFreeStartDate', start.toISOString());
     return start;
   });
@@ -22,17 +23,25 @@ const AlcoholFreeCounter = () => {
   useEffect(() => {
     const updateCounter = () => {
       const now = new Date();
-      const diff = now - startDate;
 
-      const totalSeconds = Math.floor(diff / 1000);
-      const totalMinutes = Math.floor(totalSeconds / 60);
-      const totalHours = Math.floor(totalMinutes / 60);
-      const totalDays = Math.floor(totalHours / 24);
+      // Calculate days since start (at midnight)
+      const startMidnight = new Date(startDate);
+      startMidnight.setHours(0, 0, 0, 0);
+      const todayMidnight = new Date(now);
+      todayMidnight.setHours(0, 0, 0, 0);
+      const daysDiff = Math.floor((todayMidnight - startMidnight) / (1000 * 60 * 60 * 24));
 
-      setDays(totalDays);
-      setHours(totalHours % 24);
-      setMinutes(totalMinutes % 60);
-      setSeconds(totalSeconds % 60);
+      // Calculate time elapsed today (since midnight)
+      const elapsedToday = now - todayMidnight;
+      const totalSecondsToday = Math.floor(elapsedToday / 1000);
+      const hoursToday = Math.floor(totalSecondsToday / 3600);
+      const minutesToday = Math.floor((totalSecondsToday % 3600) / 60);
+      const secondsToday = totalSecondsToday % 60;
+
+      setDays(daysDiff);
+      setHours(hoursToday);
+      setMinutes(minutesToday);
+      setSeconds(secondsToday);
     };
 
     updateCounter();
