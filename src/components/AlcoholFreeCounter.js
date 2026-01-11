@@ -2,20 +2,20 @@ import React, { useState, useEffect } from 'react';
 import './AlcoholFreeCounter.css';
 
 const AlcoholFreeCounter = () => {
-  // Start date: 150 days ago at midnight
+  // Start date: yesterday at 9:15 AM
   const [startDate] = useState(() => {
     const saved = localStorage.getItem('alcoholFreeStartDate');
     if (saved) {
       return new Date(saved);
     }
     const start = new Date();
-    start.setDate(start.getDate() - 150);
-    start.setHours(0, 0, 0, 0); // Set to midnight
+    start.setDate(start.getDate() - 1); // Yesterday
+    start.setHours(9, 15, 0, 0); // 9:15 AM
     localStorage.setItem('alcoholFreeStartDate', start.toISOString());
     return start;
   });
 
-  const [days, setDays] = useState(150);
+  const [days, setDays] = useState(1);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
