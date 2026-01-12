@@ -44,12 +44,12 @@ export default async function handler(req, res) {
     const days = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
 
     const funnyMessages = [
-      `🚨 JULIE ALERT! You've been avoiding Ashley for ${days} days! The tracker knows: ${siteUrl}`,
-      `📢 Weekly update: Julie's avoidance streak is at ${days} days! Ashley is watching: ${siteUrl}`,
-      `🏃‍♀️ Julie Avoidance Tracker: ${days} days of hiding from Ashley! See your stats: ${siteUrl}`,
-      `👀 Hey Julie! ${days} days without seeing Ashley? She's counting: ${siteUrl}`,
-      `🙈 ${days} days of dodging Ashley! Your excuses are being logged: ${siteUrl}`,
-      `😂 Julie's ghosting level: ${days} days! Ashley made a tracker for this: ${siteUrl}`,
+      `🚨 JULIE! ${days} days hiding in your province! Cross the border already: ${siteUrl}`,
+      `📢 Weekly update: ${days} days since Julie visited Ashley's province! Stats: ${siteUrl}`,
+      `✈️ Hey Julie! Flights exist! ${days} days and counting: ${siteUrl}`,
+      `🚗 Julie! It's just a drive! ${days} days of excuses logged: ${siteUrl}`,
+      `🙈 ${days} days in your province! Ashley is tracking this: ${siteUrl}`,
+      `😂 Provincial borders can't hide you forever! ${days} days: ${siteUrl}`,
     ];
 
     const message = funnyMessages[Math.floor(Math.random() * funnyMessages.length)];

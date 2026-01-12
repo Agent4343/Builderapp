@@ -45,33 +45,33 @@ const AlcoholFreeCounter = () => {
   }, [startDate]);
 
   const getMilestone = (days) => {
-    if (days >= 365) return { text: 'A YEAR?! JULIE, COME ON!', emoji: '😱', color: '#ff5555' };
-    if (days >= 180) return { text: 'HALF A YEAR HIDING FROM ASHLEY?!', emoji: '🫠', color: '#ff79c6' };
-    if (days >= 100) return { text: '100 DAYS OF AVOIDING ASHLEY!', emoji: '😭', color: '#ffb86c' };
-    if (days >= 30) return { text: 'A WHOLE MONTH, JULIE?!', emoji: '🥺', color: '#f1fa8c' };
-    if (days >= 14) return { text: 'TWO WEEKS WITHOUT ASHLEY?!', emoji: '😩', color: '#8be9fd' };
-    if (days >= 7) return { text: 'ONE WEEK ALREADY, JULIE!', emoji: '😢', color: '#bd93f9' };
-    if (days >= 3) return { text: 'JULIE IS STILL HIDING!', emoji: '🙈', color: '#50fa7b' };
-    if (days >= 1) return { text: 'THE AVOIDANCE BEGINS!', emoji: '🏃‍♀️', color: '#ff79c6' };
-    return { text: 'JULIE JUST LEFT ASHLEY!', emoji: '👋', color: '#50fa7b' };
+    if (days >= 365) return { text: 'A YEAR?! BOOK A FLIGHT, JULIE!', emoji: '✈️', color: '#ff5555' };
+    if (days >= 180) return { text: 'HALF A YEAR! PROVINCES AREN\'T THAT FAR!', emoji: '🫠', color: '#ff79c6' };
+    if (days >= 100) return { text: '100 DAYS! GAS ISN\'T THAT EXPENSIVE!', emoji: '⛽', color: '#ffb86c' };
+    if (days >= 30) return { text: 'A WHOLE MONTH, JULIE?! RENT A CAR!', emoji: '🚗', color: '#f1fa8c' };
+    if (days >= 14) return { text: 'TWO WEEKS! THERE ARE BUSES, JULIE!', emoji: '🚌', color: '#8be9fd' };
+    if (days >= 7) return { text: 'ONE WEEK! CROSS THE BORDER ALREADY!', emoji: '🛤️', color: '#bd93f9' };
+    if (days >= 3) return { text: 'STILL IN HER PROVINCE HIDING!', emoji: '🙈', color: '#50fa7b' };
+    if (days >= 1) return { text: 'JULIE WENT BACK TO HER PROVINCE!', emoji: '🏃‍♀️', color: '#ff79c6' };
+    return { text: 'JULIE JUST LEFT FOR HER PROVINCE!', emoji: '👋', color: '#50fa7b' };
   };
 
   const milestone = getMilestone(days);
 
   const getFunnyQuote = () => {
     const quotes = [
-      "Julie is out there... somewhere... hiding from Ashley.",
-      "Legend says Julie is still running from Ashley.",
-      "Ashley: exists. Julie: 🏃‍♀️💨",
-      "Julie's avoidance game is STRONG.",
-      "Somewhere, Ashley is wondering what she did wrong.",
-      "Julie has entered witness protection from Ashley.",
-      "Breaking news: Julie spotted NOT hanging out with Ashley!",
-      "Julie's excuse today: 'I'm busy washing my hair.'",
-      "Plot twist: Julie knows exactly where Ashley is. Still hiding.",
-      "Ashley: 'Wanna hang?' Julie: *seen*",
-      "Julie treating Ashley like her unread emails.",
-      "Julie ghosting level: Professional.",
+      "Julie is safe in her province... hiding from Ashley.",
+      "The provincial border can't protect you forever, Julie!",
+      "Julie's excuse: 'It's a whole other province!' ...It's a drive, Julie.",
+      "Ashley: 'Visit me!' Julie: 'I have... province stuff.'",
+      "Julie using provincial distance as an excuse since day 1.",
+      "Plot twist: Flights exist. Julie knows this.",
+      "Julie acting like she lives on another planet, not another province.",
+      "Breaking news: Julie still hasn't crossed the provincial border!",
+      "Julie's GPS mysteriously breaks at the border.",
+      "Other province, same excuses.",
+      "Julie: 'The drive is too long!' Also Julie: *binge watches 10 hours of TV*",
+      "Provincial borders: Julie's favorite excuse.",
     ];
     const totalSeconds = days * 86400 + hours * 3600 + minutes * 60 + seconds;
     return quotes[Math.floor(totalSeconds / 10) % quotes.length];
@@ -167,11 +167,11 @@ const AlcoholFreeCounter = () => {
         <div className="stats-grid">
           <div className="stat-item">
             <span className="stat-value">{Math.floor(days / 7)}</span>
-            <span className="stat-label">Weeks Hiding</span>
+            <span className="stat-label">Weeks Apart</span>
           </div>
           <div className="stat-item">
             <span className="stat-value">{(days * 24 + hours).toLocaleString()}</span>
-            <span className="stat-label">Hours Gone</span>
+            <span className="stat-label">KMs Not Driven</span>
           </div>
           <div className="stat-item">
             <span className="stat-value">{(days * 5).toLocaleString()}</span>
@@ -181,7 +181,7 @@ const AlcoholFreeCounter = () => {
 
         <div className="footer-message">
           <span className="pulse-dot"></span>
-          <span>Julie is still avoiding Ashley...</span>
+          <span>Julie is still in her province...</span>
         </div>
       </div>
     </div>
