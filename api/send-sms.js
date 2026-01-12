@@ -44,12 +44,14 @@ export default async function handler(req, res) {
     const days = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
 
     const funnyMessages = [
-      `⛴️ JULIE! ${days} days since you took the ferry! Marine Atlantic misses you: ${siteUrl}`,
-      `📢 Weekly update: ${days} days hiding in Cape Breton! Newfoundland awaits: ${siteUrl}`,
-      `🚢 Hey Julie! The ferry runs daily! ${days} days and counting: ${siteUrl}`,
-      `🌊 Julie! The Cabot Strait isn't THAT wide! ${days} days of excuses: ${siteUrl}`,
-      `🙈 ${days} days in Cape Breton! Ashley is tracking from The Rock: ${siteUrl}`,
-      `😂 North Sydney has a ferry terminal, Julie! ${days} days: ${siteUrl}`,
+      `🚨 AMBER ALERT: Julie last seen ${days} days ago fleeing to Cape Breton. Considered armed with excuses: ${siteUrl}`,
+      `📊 Julie's avoidance stats: ${days} days, 0 ferries booked, 1 Ashley still waiting: ${siteUrl}`,
+      `🎵 Hello from the other siiiide (of the strait)! It's been ${days} days, Julie: ${siteUrl}`,
+      `🦞 The lobsters in Cape Breton called. They want you to visit Ashley. ${days} days: ${siteUrl}`,
+      `⚠️ WARNING: Julie has gone ${days} days without Ashley. Side effects may include fun withdrawal: ${siteUrl}`,
+      `📍 GPS shows Julie still in Cape Breton after ${days} days. Suspicious. Very suspicious: ${siteUrl}`,
+      `🎭 Plot twist nobody asked for: Julie STILL hasn't taken the ferry. Day ${days}: ${siteUrl}`,
+      `☎️ Hi Julie! This is your ${days}-day reminder that Ashley exists: ${siteUrl}`,
     ];
 
     const message = funnyMessages[Math.floor(Math.random() * funnyMessages.length)];
