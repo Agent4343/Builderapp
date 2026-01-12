@@ -121,7 +121,7 @@ const AlcoholFreeCounter = () => {
         <div className="main-counter">
           <div className="days-display">
             <span className="days-number">{days.toLocaleString()}</span>
-            <span className="days-label">DAYS AWAY</span>
+            <span className="days-label">DAYS AWAY FROM ASHLEY</span>
           </div>
 
           <div className="sub-counter">
