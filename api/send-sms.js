@@ -45,13 +45,13 @@ export default async function handler(req, res) {
 
     const funnyMessages = [
       `🚨 AMBER ALERT: Julie last seen ${days} days ago fleeing to Cape Breton. Considered armed with excuses: ${siteUrl}`,
-      `📊 Julie's avoidance stats: ${days} days, 0 ferries booked, 1 Ashley still waiting: ${siteUrl}`,
-      `🎵 Hello from the other siiiide (of the strait)! It's been ${days} days, Julie: ${siteUrl}`,
-      `🦞 The lobsters in Cape Breton called. They want you to visit Ashley. ${days} days: ${siteUrl}`,
+      `📊 Julie's avoidance stats: ${days} days hiding, 0 visits planned, 1 Ashley still waiting: ${siteUrl}`,
+      `🦞 The lobsters in Cape Breton called. They said visit Ashley already. ${days} days: ${siteUrl}`,
       `⚠️ WARNING: Julie has gone ${days} days without Ashley. Side effects may include fun withdrawal: ${siteUrl}`,
       `📍 GPS shows Julie still in Cape Breton after ${days} days. Suspicious. Very suspicious: ${siteUrl}`,
-      `🎭 Plot twist nobody asked for: Julie STILL hasn't taken the ferry. Day ${days}: ${siteUrl}`,
       `☎️ Hi Julie! This is your ${days}-day reminder that Ashley exists: ${siteUrl}`,
+      `👀 Day ${days}: Ashley is still watching. Ashley is still waiting. Ashley knows: ${siteUrl}`,
+      `🏃‍♀️ Julie's been running from Ashley for ${days} days. New personal record?: ${siteUrl}`,
     ];
 
     const message = funnyMessages[Math.floor(Math.random() * funnyMessages.length)];

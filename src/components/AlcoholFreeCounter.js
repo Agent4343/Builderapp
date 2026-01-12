@@ -48,15 +48,15 @@ const AlcoholFreeCounter = () => {
   }, [startDate]);
 
   const getMilestone = (days) => {
-    if (days >= 365) return { text: 'A YEAR?! THE FERRY ISN\'T THAT BAD, JULIE!', emoji: '⛴️', color: '#ff5555' };
+    if (days >= 365) return { text: 'A WHOLE YEAR, JULIE?! REALLY?!', emoji: '😱', color: '#ff5555' };
     if (days >= 180) return { text: 'HALF A YEAR! CAPE BRETON ISN\'T THAT FAR!', emoji: '🫠', color: '#ff79c6' };
-    if (days >= 100) return { text: '100 DAYS! BOOK THE FERRY, JULIE!', emoji: '🎫', color: '#ffb86c' };
-    if (days >= 30) return { text: 'A MONTH?! MARINE ATLANTIC MISSES YOU!', emoji: '⛴️', color: '#f1fa8c' };
-    if (days >= 14) return { text: 'TWO WEEKS! THE STRAIT ISN\'T THAT WIDE!', emoji: '🌊', color: '#8be9fd' };
-    if (days >= 7) return { text: 'ONE WEEK! GET ON THE BOAT, JULIE!', emoji: '🚢', color: '#bd93f9' };
+    if (days >= 100) return { text: '100 DAYS OF AVOIDING ASHLEY!', emoji: '💯', color: '#ffb86c' };
+    if (days >= 30) return { text: 'A WHOLE MONTH, JULIE?!', emoji: '📅', color: '#f1fa8c' };
+    if (days >= 14) return { text: 'TWO WEEKS! ASHLEY MISSES YOU!', emoji: '😢', color: '#8be9fd' };
+    if (days >= 7) return { text: 'ONE WEEK! COME VISIT ALREADY!', emoji: '🥺', color: '#bd93f9' };
     if (days >= 3) return { text: 'STILL HIDING IN CAPE BRETON!', emoji: '🙈', color: '#50fa7b' };
-    if (days >= 1) return { text: 'JULIE TOOK THE FERRY BACK!', emoji: '🏃‍♀️', color: '#ff79c6' };
-    return { text: 'JULIE JUST LEFT FOR CAPE BRETON!', emoji: '👋', color: '#50fa7b' };
+    if (days >= 1) return { text: 'JULIE WENT BACK TO CAPE BRETON!', emoji: '🏃‍♀️', color: '#ff79c6' };
+    return { text: 'JULIE JUST LEFT!', emoji: '👋', color: '#50fa7b' };
   };
 
   const milestone = getMilestone(days);
@@ -64,17 +64,17 @@ const AlcoholFreeCounter = () => {
   const getFunnyQuote = () => {
     const quotes = [
       "Julie is safe in Cape Breton... hiding from Ashley.",
-      "The Cabot Strait can't protect you forever, Julie!",
-      "Julie's excuse: 'The ferry is too long!' It's 7 hours, Julie.",
-      "Ashley: 'Visit Newfoundland!' Julie: 'I have... Cape Breton stuff.'",
-      "Julie acting like the Atlantic Ocean is between them. It's a strait.",
-      "Plot twist: Marine Atlantic has a schedule. Julie knows this.",
-      "Julie pretending North Sydney doesn't have a ferry terminal.",
-      "Breaking news: Julie still hasn't boarded the ferry!",
-      "Julie: 'The ferry is expensive!' Also Julie: *buys expensive things*",
-      "Cape Breton to Newfoundland: Julie's impossible journey apparently.",
-      "Julie treating the ferry like it's a voyage to Europe.",
+      "Ashley: 'Visit me!' Julie: 'I have... Cape Breton stuff.'",
+      "Julie acting like Newfoundland is on another planet.",
+      "Breaking news: Julie still hasn't visited Ashley!",
+      "Julie's excuses are getting creative at this point.",
       "The Rock is calling, Julie. Answer it.",
+      "Somewhere in Cape Breton, Julie is pretending to be busy.",
+      "Julie's avoidance skills: legendary.",
+      "Ashley is literally right there, Julie.",
+      "Cape Breton isn't THAT nice, Julie. Visit Ashley.",
+      "Julie treating a visit like it's a quest to Mordor.",
+      "Plot twist: Julie could visit anytime. She just won't.",
     ];
     const totalSeconds = days * 86400 + hours * 3600 + minutes * 60 + seconds;
     return quotes[Math.floor(totalSeconds / 10) % quotes.length];
@@ -174,7 +174,7 @@ const AlcoholFreeCounter = () => {
           </div>
           <div className="stat-item">
             <span className="stat-value">{days}</span>
-            <span className="stat-label">Ferries Missed</span>
+            <span className="stat-label">Visits Skipped</span>
           </div>
           <div className="stat-item">
             <span className="stat-value">{(days * 5).toLocaleString()}</span>
