@@ -4,7 +4,7 @@ import './AlcoholFreeCounter.css';
 const AlcoholFreeCounter = () => {
   // Start date: yesterday at 9:15 PM Nova Scotia time (Atlantic Time)
   const [startDate] = useState(() => {
-    const saved = localStorage.getItem('alcoholFreeStartDate');
+    const saved = localStorage.getItem('lastWithJulieDate');
     if (saved) {
       return new Date(saved);
     }
@@ -13,7 +13,7 @@ const AlcoholFreeCounter = () => {
     const novaScotiaTime = new Date(now.toLocaleString('en-US', { timeZone: 'America/Halifax' }));
     novaScotiaTime.setDate(novaScotiaTime.getDate() - 1); // Yesterday
     novaScotiaTime.setHours(21, 15, 0, 0); // 9:15 PM
-    localStorage.setItem('alcoholFreeStartDate', novaScotiaTime.toISOString());
+    localStorage.setItem('lastWithJulieDate', novaScotiaTime.toISOString());
     return novaScotiaTime;
   });
 
@@ -26,24 +26,17 @@ const AlcoholFreeCounter = () => {
     const updateCounter = () => {
       const now = new Date();
 
-      // Calculate days since start (at midnight)
-      const startMidnight = new Date(startDate);
-      startMidnight.setHours(0, 0, 0, 0);
-      const todayMidnight = new Date(now);
-      todayMidnight.setHours(0, 0, 0, 0);
-      const daysDiff = Math.floor((todayMidnight - startMidnight) / (1000 * 60 * 60 * 24));
+      // Calculate total time since start
+      const diff = now - startDate;
+      const totalSeconds = Math.floor(diff / 1000);
+      const totalMinutes = Math.floor(totalSeconds / 60);
+      const totalHours = Math.floor(totalMinutes / 60);
+      const totalDays = Math.floor(totalHours / 24);
 
-      // Calculate time elapsed today (since midnight)
-      const elapsedToday = now - todayMidnight;
-      const totalSecondsToday = Math.floor(elapsedToday / 1000);
-      const hoursToday = Math.floor(totalSecondsToday / 3600);
-      const minutesToday = Math.floor((totalSecondsToday % 3600) / 60);
-      const secondsToday = totalSecondsToday % 60;
-
-      setDays(daysDiff);
-      setHours(hoursToday);
-      setMinutes(minutesToday);
-      setSeconds(secondsToday);
+      setDays(totalDays);
+      setHours(totalHours % 24);
+      setMinutes(totalMinutes % 60);
+      setSeconds(totalSeconds % 60);
     };
 
     updateCounter();
@@ -52,34 +45,41 @@ const AlcoholFreeCounter = () => {
   }, [startDate]);
 
   const getMilestone = (days) => {
-    if (days >= 365) return { text: 'ONE YEAR CHAMPION!', emoji: '👑', color: '#ffd700' };
-    if (days >= 180) return { text: 'HALF YEAR HERO!', emoji: '🏆', color: '#c0c0c0' };
-    if (days >= 150) return { text: 'INCREDIBLE JOURNEY!', emoji: '⭐', color: '#50fa7b' };
-    if (days >= 100) return { text: 'CENTURY CLUB!', emoji: '💯', color: '#ff79c6' };
-    if (days >= 30) return { text: 'ONE MONTH STRONG!', emoji: '💪', color: '#8be9fd' };
-    if (days >= 7) return { text: 'ONE WEEK WARRIOR!', emoji: '🔥', color: '#ffb86c' };
-    return { text: 'EVERY DAY COUNTS!', emoji: '✨', color: '#bd93f9' };
+    if (days >= 365) return { text: 'A WHOLE YEAR?! GO SEE HER!', emoji: '😱', color: '#ff5555' };
+    if (days >= 180) return { text: 'HALF A YEAR... SERIOUSLY?!', emoji: '🫠', color: '#ff79c6' };
+    if (days >= 100) return { text: '100 DAYS OF MISSING JULIE!', emoji: '😭', color: '#ffb86c' };
+    if (days >= 30) return { text: 'A MONTH WITHOUT JULIE?!', emoji: '🥺', color: '#f1fa8c' };
+    if (days >= 14) return { text: 'TWO WEEKS IS TOO LONG!', emoji: '😩', color: '#8be9fd' };
+    if (days >= 7) return { text: 'ONE WEEK ALREADY?!', emoji: '😢', color: '#bd93f9' };
+    if (days >= 3) return { text: 'MISSING HER YET?', emoji: '🥹', color: '#50fa7b' };
+    if (days >= 1) return { text: 'THE COUNTDOWN BEGINS!', emoji: '💕', color: '#ff79c6' };
+    return { text: 'JUST LEFT JULIE!', emoji: '👋', color: '#50fa7b' };
   };
 
   const milestone = getMilestone(days);
 
-  const getMotivationalQuote = () => {
+  const getFunnyQuote = () => {
     const quotes = [
-      "Your strength inspires others.",
-      "Every sober day is a victory.",
-      "You're rewriting your story.",
-      "Freedom feels amazing.",
-      "Clear mind, full heart.",
-      "You're unstoppable.",
-      "Celebrate your power.",
-      "Living your best life."
+      "Julie is probably wondering where you are...",
+      "Somewhere, Julie just sneezed. She's thinking of you!",
+      "Time flies when you're NOT with Julie... wait, no it doesn't.",
+      "Ashley withdrawal symptoms may include: missing Julie.",
+      "Pro tip: Call Julie. She's awesome.",
+      "This timer judges you. Go see Julie!",
+      "Fun fact: Julie misses you more. Probably.",
+      "Distance makes the heart grow fonder... GO VISIT!",
+      "Every second without Julie is a second too long.",
+      "Julie > Everything else. Just saying.",
+      "Breaking news: Ashley still not with Julie!",
+      "Plot twist: You could be with Julie right now.",
     ];
-    return quotes[days % quotes.length];
+    const totalSeconds = days * 86400 + hours * 3600 + minutes * 60 + seconds;
+    return quotes[Math.floor(totalSeconds / 10) % quotes.length];
   };
 
   // Calculate progress to next milestone
   const getNextMilestone = () => {
-    const milestones = [7, 30, 100, 150, 180, 365, 500, 1000];
+    const milestones = [1, 3, 7, 14, 30, 100, 180, 365];
     for (let m of milestones) {
       if (days < m) return m;
     }
@@ -87,7 +87,7 @@ const AlcoholFreeCounter = () => {
   };
 
   const nextMilestone = getNextMilestone();
-  const prevMilestone = [0, 7, 30, 100, 150, 180, 365].reverse().find(m => m <= days) || 0;
+  const prevMilestone = [0, 1, 3, 7, 14, 30, 100, 180, 365].reverse().find(m => m <= days) || 0;
   const progress = ((days - prevMilestone) / (nextMilestone - prevMilestone)) * 100;
 
   return (
@@ -114,14 +114,14 @@ const AlcoholFreeCounter = () => {
         <div className="glow"></div>
 
         <div className="header">
-          <span className="badge">ALWAYS ASHLEY</span>
-          <h1 className="title">Julie's Journey</h1>
+          <span className="badge">MISSING JULIE TIMER</span>
+          <h1 className="title">Ashley's Countdown</h1>
         </div>
 
         <div className="main-counter">
           <div className="days-display">
             <span className="days-number">{days.toLocaleString()}</span>
-            <span className="days-label">DAYS AWAY FROM JULIE</span>
+            <span className="days-label">DAYS SINCE SEEING JULIE</span>
           </div>
 
           <div className="sub-counter">
@@ -149,7 +149,7 @@ const AlcoholFreeCounter = () => {
 
         <div className="progress-section">
           <div className="progress-header">
-            <span>Progress to {nextMilestone} days</span>
+            <span>Loneliness level: {nextMilestone} days</span>
             <span>{Math.round(progress)}%</span>
           </div>
           <div className="progress-bar">
@@ -161,27 +161,27 @@ const AlcoholFreeCounter = () => {
         </div>
 
         <div className="quote-section">
-          <p className="quote">"{getMotivationalQuote()}"</p>
+          <p className="quote">"{getFunnyQuote()}"</p>
         </div>
 
         <div className="stats-grid">
           <div className="stat-item">
             <span className="stat-value">{Math.floor(days / 7)}</span>
-            <span className="stat-label">Weeks</span>
+            <span className="stat-label">Sad Weeks</span>
           </div>
           <div className="stat-item">
-            <span className="stat-value">{Math.floor(days / 30)}</span>
-            <span className="stat-label">Months</span>
+            <span className="stat-value">{(days * 24 + hours).toLocaleString()}</span>
+            <span className="stat-label">Lonely Hours</span>
           </div>
           <div className="stat-item">
-            <span className="stat-value">{(days * 24).toLocaleString()}</span>
-            <span className="stat-label">Hours</span>
+            <span className="stat-value">{(days * 3).toLocaleString()}</span>
+            <span className="stat-label">Missed Hugs</span>
           </div>
         </div>
 
         <div className="footer-message">
           <span className="pulse-dot"></span>
-          <span>Counter is live and counting</span>
+          <span>Time without Julie is ticking...</span>
         </div>
       </div>
     </div>
