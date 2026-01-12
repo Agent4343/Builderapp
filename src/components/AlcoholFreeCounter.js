@@ -4,7 +4,7 @@ import './AlcoholFreeCounter.css';
 const AlcoholFreeCounter = () => {
   // Start date: yesterday at 9:15 PM Nova Scotia time (Atlantic Time)
   const [startDate] = useState(() => {
-    const saved = localStorage.getItem('lastWithJulieDate');
+    const saved = localStorage.getItem('julieAvoidingAshley');
     if (saved) {
       return new Date(saved);
     }
@@ -13,7 +13,7 @@ const AlcoholFreeCounter = () => {
     const novaScotiaTime = new Date(now.toLocaleString('en-US', { timeZone: 'America/Halifax' }));
     novaScotiaTime.setDate(novaScotiaTime.getDate() - 1); // Yesterday
     novaScotiaTime.setHours(21, 15, 0, 0); // 9:15 PM
-    localStorage.setItem('lastWithJulieDate', novaScotiaTime.toISOString());
+    localStorage.setItem('julieAvoidingAshley', novaScotiaTime.toISOString());
     return novaScotiaTime;
   });
 
@@ -45,33 +45,33 @@ const AlcoholFreeCounter = () => {
   }, [startDate]);
 
   const getMilestone = (days) => {
-    if (days >= 365) return { text: 'A WHOLE YEAR?! GO SEE HER!', emoji: '😱', color: '#ff5555' };
-    if (days >= 180) return { text: 'HALF A YEAR... SERIOUSLY?!', emoji: '🫠', color: '#ff79c6' };
-    if (days >= 100) return { text: '100 DAYS OF MISSING JULIE!', emoji: '😭', color: '#ffb86c' };
-    if (days >= 30) return { text: 'A MONTH WITHOUT JULIE?!', emoji: '🥺', color: '#f1fa8c' };
-    if (days >= 14) return { text: 'TWO WEEKS IS TOO LONG!', emoji: '😩', color: '#8be9fd' };
-    if (days >= 7) return { text: 'ONE WEEK ALREADY?!', emoji: '😢', color: '#bd93f9' };
-    if (days >= 3) return { text: 'MISSING HER YET?', emoji: '🥹', color: '#50fa7b' };
-    if (days >= 1) return { text: 'THE COUNTDOWN BEGINS!', emoji: '💕', color: '#ff79c6' };
-    return { text: 'JUST LEFT JULIE!', emoji: '👋', color: '#50fa7b' };
+    if (days >= 365) return { text: 'A YEAR?! JULIE, COME ON!', emoji: '😱', color: '#ff5555' };
+    if (days >= 180) return { text: 'HALF A YEAR HIDING FROM ASHLEY?!', emoji: '🫠', color: '#ff79c6' };
+    if (days >= 100) return { text: '100 DAYS OF AVOIDING ASHLEY!', emoji: '😭', color: '#ffb86c' };
+    if (days >= 30) return { text: 'A WHOLE MONTH, JULIE?!', emoji: '🥺', color: '#f1fa8c' };
+    if (days >= 14) return { text: 'TWO WEEKS WITHOUT ASHLEY?!', emoji: '😩', color: '#8be9fd' };
+    if (days >= 7) return { text: 'ONE WEEK ALREADY, JULIE!', emoji: '😢', color: '#bd93f9' };
+    if (days >= 3) return { text: 'JULIE IS STILL HIDING!', emoji: '🙈', color: '#50fa7b' };
+    if (days >= 1) return { text: 'THE AVOIDANCE BEGINS!', emoji: '🏃‍♀️', color: '#ff79c6' };
+    return { text: 'JULIE JUST LEFT ASHLEY!', emoji: '👋', color: '#50fa7b' };
   };
 
   const milestone = getMilestone(days);
 
   const getFunnyQuote = () => {
     const quotes = [
-      "Julie is probably wondering where you are...",
-      "Somewhere, Julie just sneezed. She's thinking of you!",
-      "Time flies when you're NOT with Julie... wait, no it doesn't.",
-      "Ashley withdrawal symptoms may include: missing Julie.",
-      "Pro tip: Call Julie. She's awesome.",
-      "This timer judges you. Go see Julie!",
-      "Fun fact: Julie misses you more. Probably.",
-      "Distance makes the heart grow fonder... GO VISIT!",
-      "Every second without Julie is a second too long.",
-      "Julie > Everything else. Just saying.",
-      "Breaking news: Ashley still not with Julie!",
-      "Plot twist: You could be with Julie right now.",
+      "Julie is out there... somewhere... hiding from Ashley.",
+      "Legend says Julie is still running from Ashley.",
+      "Ashley: exists. Julie: 🏃‍♀️💨",
+      "Julie's avoidance game is STRONG.",
+      "Somewhere, Ashley is wondering what she did wrong.",
+      "Julie has entered witness protection from Ashley.",
+      "Breaking news: Julie spotted NOT hanging out with Ashley!",
+      "Julie's excuse today: 'I'm busy washing my hair.'",
+      "Plot twist: Julie knows exactly where Ashley is. Still hiding.",
+      "Ashley: 'Wanna hang?' Julie: *seen*",
+      "Julie treating Ashley like her unread emails.",
+      "Julie ghosting level: Professional.",
     ];
     const totalSeconds = days * 86400 + hours * 3600 + minutes * 60 + seconds;
     return quotes[Math.floor(totalSeconds / 10) % quotes.length];
@@ -114,14 +114,14 @@ const AlcoholFreeCounter = () => {
         <div className="glow"></div>
 
         <div className="header">
-          <span className="badge">MISSING JULIE TIMER</span>
-          <h1 className="title">Ashley's Countdown</h1>
+          <span className="badge">JULIE AVOIDANCE TRACKER</span>
+          <h1 className="title">Where's Julie?!</h1>
         </div>
 
         <div className="main-counter">
           <div className="days-display">
             <span className="days-number">{days.toLocaleString()}</span>
-            <span className="days-label">DAYS SINCE SEEING JULIE</span>
+            <span className="days-label">DAYS JULIE HASN'T SEEN ASHLEY</span>
           </div>
 
           <div className="sub-counter">
@@ -149,7 +149,7 @@ const AlcoholFreeCounter = () => {
 
         <div className="progress-section">
           <div className="progress-header">
-            <span>Loneliness level: {nextMilestone} days</span>
+            <span>Avoidance level: {nextMilestone} days</span>
             <span>{Math.round(progress)}%</span>
           </div>
           <div className="progress-bar">
@@ -167,21 +167,21 @@ const AlcoholFreeCounter = () => {
         <div className="stats-grid">
           <div className="stat-item">
             <span className="stat-value">{Math.floor(days / 7)}</span>
-            <span className="stat-label">Sad Weeks</span>
+            <span className="stat-label">Weeks Hiding</span>
           </div>
           <div className="stat-item">
             <span className="stat-value">{(days * 24 + hours).toLocaleString()}</span>
-            <span className="stat-label">Lonely Hours</span>
+            <span className="stat-label">Hours Gone</span>
           </div>
           <div className="stat-item">
-            <span className="stat-value">{(days * 3).toLocaleString()}</span>
-            <span className="stat-label">Missed Hugs</span>
+            <span className="stat-value">{(days * 5).toLocaleString()}</span>
+            <span className="stat-label">Excuses Made</span>
           </div>
         </div>
 
         <div className="footer-message">
           <span className="pulse-dot"></span>
-          <span>Time without Julie is ticking...</span>
+          <span>Julie is still avoiding Ashley...</span>
         </div>
       </div>
     </div>
