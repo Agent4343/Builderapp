@@ -26,14 +26,17 @@ const AlcoholFreeCounter = () => {
     const updateCounter = () => {
       const now = new Date();
 
-      // Calculate total time since start
+      // Calculate total time since start (9:15 PM yesterday)
       const diff = now - startDate;
       const totalSeconds = Math.floor(diff / 1000);
       const totalMinutes = Math.floor(totalSeconds / 60);
       const totalHours = Math.floor(totalMinutes / 60);
+
+      // Count days - after 24 hours = 1 day
       const totalDays = Math.floor(totalHours / 24);
 
-      setDays(totalDays);
+      // Show remaining hours/minutes/seconds after full days
+      setDays(Math.max(1, totalDays)); // Minimum 1 day
       setHours(totalHours % 24);
       setMinutes(totalMinutes % 60);
       setSeconds(totalSeconds % 60);
