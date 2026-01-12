@@ -2,17 +2,19 @@ import React, { useState, useEffect } from 'react';
 import './AlcoholFreeCounter.css';
 
 const AlcoholFreeCounter = () => {
-  // Start date: yesterday at 9:15 AM
+  // Start date: yesterday at 9:15 PM Nova Scotia time (Atlantic Time)
   const [startDate] = useState(() => {
     const saved = localStorage.getItem('alcoholFreeStartDate');
     if (saved) {
       return new Date(saved);
     }
-    const start = new Date();
-    start.setDate(start.getDate() - 1); // Yesterday
-    start.setHours(21, 15, 0, 0); // 9:15 PM
-    localStorage.setItem('alcoholFreeStartDate', start.toISOString());
-    return start;
+    // Create date in Nova Scotia timezone (America/Halifax)
+    const now = new Date();
+    const novaScotiaTime = new Date(now.toLocaleString('en-US', { timeZone: 'America/Halifax' }));
+    novaScotiaTime.setDate(novaScotiaTime.getDate() - 1); // Yesterday
+    novaScotiaTime.setHours(21, 15, 0, 0); // 9:15 PM
+    localStorage.setItem('alcoholFreeStartDate', novaScotiaTime.toISOString());
+    return novaScotiaTime;
   });
 
   const [days, setDays] = useState(1);
