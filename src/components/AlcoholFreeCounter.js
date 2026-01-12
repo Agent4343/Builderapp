@@ -45,33 +45,33 @@ const AlcoholFreeCounter = () => {
   }, [startDate]);
 
   const getMilestone = (days) => {
-    if (days >= 365) return { text: 'A YEAR?! BOOK A FLIGHT, JULIE!', emoji: '✈️', color: '#ff5555' };
-    if (days >= 180) return { text: 'HALF A YEAR! PROVINCES AREN\'T THAT FAR!', emoji: '🫠', color: '#ff79c6' };
-    if (days >= 100) return { text: '100 DAYS! GAS ISN\'T THAT EXPENSIVE!', emoji: '⛽', color: '#ffb86c' };
-    if (days >= 30) return { text: 'A WHOLE MONTH, JULIE?! RENT A CAR!', emoji: '🚗', color: '#f1fa8c' };
-    if (days >= 14) return { text: 'TWO WEEKS! THERE ARE BUSES, JULIE!', emoji: '🚌', color: '#8be9fd' };
-    if (days >= 7) return { text: 'ONE WEEK! CROSS THE BORDER ALREADY!', emoji: '🛤️', color: '#bd93f9' };
-    if (days >= 3) return { text: 'STILL IN HER PROVINCE HIDING!', emoji: '🙈', color: '#50fa7b' };
-    if (days >= 1) return { text: 'JULIE WENT BACK TO HER PROVINCE!', emoji: '🏃‍♀️', color: '#ff79c6' };
-    return { text: 'JULIE JUST LEFT FOR HER PROVINCE!', emoji: '👋', color: '#50fa7b' };
+    if (days >= 365) return { text: 'A YEAR?! THE FERRY ISN\'T THAT BAD, JULIE!', emoji: '⛴️', color: '#ff5555' };
+    if (days >= 180) return { text: 'HALF A YEAR! CAPE BRETON ISN\'T THAT FAR!', emoji: '🫠', color: '#ff79c6' };
+    if (days >= 100) return { text: '100 DAYS! BOOK THE FERRY, JULIE!', emoji: '🎫', color: '#ffb86c' };
+    if (days >= 30) return { text: 'A MONTH?! MARINE ATLANTIC MISSES YOU!', emoji: '⛴️', color: '#f1fa8c' };
+    if (days >= 14) return { text: 'TWO WEEKS! THE STRAIT ISN\'T THAT WIDE!', emoji: '🌊', color: '#8be9fd' };
+    if (days >= 7) return { text: 'ONE WEEK! GET ON THE BOAT, JULIE!', emoji: '🚢', color: '#bd93f9' };
+    if (days >= 3) return { text: 'STILL HIDING IN CAPE BRETON!', emoji: '🙈', color: '#50fa7b' };
+    if (days >= 1) return { text: 'JULIE TOOK THE FERRY BACK!', emoji: '🏃‍♀️', color: '#ff79c6' };
+    return { text: 'JULIE JUST LEFT FOR CAPE BRETON!', emoji: '👋', color: '#50fa7b' };
   };
 
   const milestone = getMilestone(days);
 
   const getFunnyQuote = () => {
     const quotes = [
-      "Julie is safe in her province... hiding from Ashley.",
-      "The provincial border can't protect you forever, Julie!",
-      "Julie's excuse: 'It's a whole other province!' ...It's a drive, Julie.",
-      "Ashley: 'Visit me!' Julie: 'I have... province stuff.'",
-      "Julie using provincial distance as an excuse since day 1.",
-      "Plot twist: Flights exist. Julie knows this.",
-      "Julie acting like she lives on another planet, not another province.",
-      "Breaking news: Julie still hasn't crossed the provincial border!",
-      "Julie's GPS mysteriously breaks at the border.",
-      "Other province, same excuses.",
-      "Julie: 'The drive is too long!' Also Julie: *binge watches 10 hours of TV*",
-      "Provincial borders: Julie's favorite excuse.",
+      "Julie is safe in Cape Breton... hiding from Ashley.",
+      "The Cabot Strait can't protect you forever, Julie!",
+      "Julie's excuse: 'The ferry is too long!' It's 7 hours, Julie.",
+      "Ashley: 'Visit Newfoundland!' Julie: 'I have... Cape Breton stuff.'",
+      "Julie acting like the Atlantic Ocean is between them. It's a strait.",
+      "Plot twist: Marine Atlantic has a schedule. Julie knows this.",
+      "Julie pretending North Sydney doesn't have a ferry terminal.",
+      "Breaking news: Julie still hasn't boarded the ferry!",
+      "Julie: 'The ferry is expensive!' Also Julie: *buys expensive things*",
+      "Cape Breton to Newfoundland: Julie's impossible journey apparently.",
+      "Julie treating the ferry like it's a voyage to Europe.",
+      "The Rock is calling, Julie. Answer it.",
     ];
     const totalSeconds = days * 86400 + hours * 3600 + minutes * 60 + seconds;
     return quotes[Math.floor(totalSeconds / 10) % quotes.length];
@@ -114,14 +114,14 @@ const AlcoholFreeCounter = () => {
         <div className="glow"></div>
 
         <div className="header">
-          <span className="badge">JULIE AVOIDANCE TRACKER</span>
+          <span className="badge">CAPE BRETON → NEWFOUNDLAND</span>
           <h1 className="title">Where's Julie?!</h1>
         </div>
 
         <div className="main-counter">
           <div className="days-display">
             <span className="days-number">{days.toLocaleString()}</span>
-            <span className="days-label">DAYS JULIE HASN'T SEEN ASHLEY</span>
+            <span className="days-label">DAYS SINCE JULIE TOOK THE FERRY</span>
           </div>
 
           <div className="sub-counter">
@@ -170,8 +170,8 @@ const AlcoholFreeCounter = () => {
             <span className="stat-label">Weeks Apart</span>
           </div>
           <div className="stat-item">
-            <span className="stat-value">{(days * 24 + hours).toLocaleString()}</span>
-            <span className="stat-label">KMs Not Driven</span>
+            <span className="stat-value">{days}</span>
+            <span className="stat-label">Ferries Missed</span>
           </div>
           <div className="stat-item">
             <span className="stat-value">{(days * 5).toLocaleString()}</span>
@@ -181,7 +181,7 @@ const AlcoholFreeCounter = () => {
 
         <div className="footer-message">
           <span className="pulse-dot"></span>
-          <span>Julie is still in her province...</span>
+          <span>Julie is still in Cape Breton...</span>
         </div>
       </div>
     </div>

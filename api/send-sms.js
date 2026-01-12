@@ -44,12 +44,12 @@ export default async function handler(req, res) {
     const days = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
 
     const funnyMessages = [
-      `🚨 JULIE! ${days} days hiding in your province! Cross the border already: ${siteUrl}`,
-      `📢 Weekly update: ${days} days since Julie visited Ashley's province! Stats: ${siteUrl}`,
-      `✈️ Hey Julie! Flights exist! ${days} days and counting: ${siteUrl}`,
-      `🚗 Julie! It's just a drive! ${days} days of excuses logged: ${siteUrl}`,
-      `🙈 ${days} days in your province! Ashley is tracking this: ${siteUrl}`,
-      `😂 Provincial borders can't hide you forever! ${days} days: ${siteUrl}`,
+      `⛴️ JULIE! ${days} days since you took the ferry! Marine Atlantic misses you: ${siteUrl}`,
+      `📢 Weekly update: ${days} days hiding in Cape Breton! Newfoundland awaits: ${siteUrl}`,
+      `🚢 Hey Julie! The ferry runs daily! ${days} days and counting: ${siteUrl}`,
+      `🌊 Julie! The Cabot Strait isn't THAT wide! ${days} days of excuses: ${siteUrl}`,
+      `🙈 ${days} days in Cape Breton! Ashley is tracking from The Rock: ${siteUrl}`,
+      `😂 North Sydney has a ferry terminal, Julie! ${days} days: ${siteUrl}`,
     ];
 
     const message = funnyMessages[Math.floor(Math.random() * funnyMessages.length)];
