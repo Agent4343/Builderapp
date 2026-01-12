@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './AlcoholFreeCounter.css';
 
 const AlcoholFreeCounter = () => {
-  // Fixed start date: January 11, 2025 at 9:15 PM Nova Scotia time (AST = UTC-4)
-  const startDate = new Date('2025-01-11T21:15:00-04:00');
+  // Fixed start date: January 11, 2026 at 9:15 PM Nova Scotia time (AST = UTC-4)
+  const startDate = new Date('2026-01-11T21:15:00-04:00');
 
   const [days, setDays] = useState(1);
   const [hours, setHours] = useState(0);

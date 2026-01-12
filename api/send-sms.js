@@ -36,8 +36,8 @@ export default async function handler(req, res) {
   try {
     const client = twilio(accountSid, authToken);
 
-    // Fixed start date: January 11, 2025 at 9:15 PM Nova Scotia time (AST = UTC-4)
-    const startDate = new Date('2025-01-11T21:15:00-04:00');
+    // Fixed start date: January 11, 2026 at 9:15 PM Nova Scotia time (AST = UTC-4)
+    const startDate = new Date('2026-01-11T21:15:00-04:00');
     const now = new Date();
     const days = Math.max(1, Math.floor((now - startDate) / (1000 * 60 * 60 * 24)));
 
